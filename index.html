@@ -1,0 +1,1156 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pearl · Family Counsel</title>
+<meta name="description" content="Voor ouders die uit elkaar gaan, en die het mooi willen doen. Pearl begeleidt drie gezinnen per maand. Wachtlijst geopend.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400;1,9..144,500&family=Manrope:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #F5F1E8;
+    --cream-deep: #EFEADD;
+    --butter: #EDD9A0;
+    --butter-soft: #F4E6BB;
+    --ink: #161412;
+    --ink-soft: #2A2620;
+    --stone: #918876;
+    --stone-light: #BFB6A4;
+    --pearl: #FAF7F1;
+    --line: #D8D1BF;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html {
+    scroll-behavior: smooth;
+    background: var(--cream);
+  }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'Manrope', sans-serif;
+    font-weight: 300;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  ::selection { background: var(--butter); color: var(--ink); }
+
+  a { color: inherit; text-decoration: none; }
+
+  .label {
+    font-family: 'Manrope', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    font-weight: 400;
+    color: var(--stone);
+  }
+
+  .italic { font-family: 'Fraunces', serif; font-style: italic; font-weight: 300; }
+
+  /* ===== NAV ===== */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    padding: 28px 6vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+    background: rgba(245, 241, 232, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.3s ease;
+  }
+  nav.scrolled { border-bottom-color: var(--line); }
+  .nav-mark {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: 18px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+  .nav-mark .dot {
+    display: inline-block;
+    width: 5px; height: 5px;
+    background: var(--butter);
+    border-radius: 50%;
+    margin-left: 2px;
+    transform: translateY(-7px);
+  }
+  .nav-links {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+  }
+  .nav-links a {
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 400;
+    color: var(--ink-soft);
+    transition: color 0.3s;
+    position: relative;
+  }
+  .nav-links a:hover { color: var(--ink); }
+  .nav-cta {
+    border: 1px solid var(--ink);
+    padding: 12px 22px;
+    border-radius: 100px;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    transition: all 0.3s;
+  }
+  .nav-cta:hover { background: var(--ink); color: var(--cream); }
+
+  @media (max-width: 800px) {
+    .nav-links a:not(.nav-cta) { display: none; }
+  }
+
+  /* ===== HERO ===== */
+  .hero {
+    min-height: 100vh;
+    padding: 120px 6vw 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+  }
+
+  .hero-meta-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: auto;
+  }
+  .hero-meta-right {
+    text-align: right;
+    line-height: 1.8;
+  }
+
+  .hero-mark {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: clamp(80px, 22vw, 360px);
+    line-height: 0.85;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    margin-top: auto;
+    position: relative;
+  }
+  .hero-mark .pearl-dot {
+    display: inline-block;
+    width: 0.13em;
+    height: 0.13em;
+    background: var(--butter);
+    border-radius: 50%;
+    margin-left: 0.04em;
+    transform: translateY(-0.05em);
+  }
+
+  .hero-tagline {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: clamp(20px, 2.4vw, 32px);
+    line-height: 1.35;
+    color: var(--ink-soft);
+    max-width: 620px;
+    margin-top: 50px;
+  }
+
+  .hero-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-top: 60px;
+    padding-top: 30px;
+    border-top: 1px solid var(--line);
+    gap: 30px;
+    flex-wrap: wrap;
+  }
+  .hero-bottom-block { font-size: 13px; line-height: 1.6; max-width: 240px; color: var(--ink-soft); }
+  .hero-bottom-block strong {
+    display: block;
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 18px;
+    color: var(--ink);
+    margin-bottom: 6px;
+  }
+
+  /* ===== SECTIONS ===== */
+  section {
+    padding: 140px 6vw;
+    position: relative;
+  }
+
+  .section-header {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 80px;
+    margin-bottom: 80px;
+    align-items: baseline;
+  }
+  .section-num {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 14px;
+    color: var(--stone);
+  }
+  .section-title {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: clamp(40px, 5.5vw, 88px);
+    line-height: 1;
+    letter-spacing: -0.025em;
+    max-width: 1100px;
+  }
+  .section-title em { font-style: italic; }
+
+  @media (max-width: 800px) {
+    .section-header { grid-template-columns: 1fr; gap: 30px; margin-bottom: 50px; }
+  }
+
+  /* ===== ABOUT (the parel filosofie) ===== */
+  .about-section {
+    background: var(--cream-deep);
+  }
+  .about-grid {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 80px;
+  }
+  .about-content { max-width: 760px; }
+  .about-content p {
+    font-size: 18px;
+    line-height: 1.7;
+    margin-bottom: 1.4em;
+    color: var(--ink-soft);
+  }
+  .about-content p:first-child {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 28px;
+    line-height: 1.4;
+    color: var(--ink);
+    margin-bottom: 50px;
+  }
+  .about-quote {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: clamp(28px, 3.5vw, 44px);
+    line-height: 1.25;
+    color: var(--ink);
+    margin: 60px 0;
+    padding-left: 30px;
+    border-left: 2px solid var(--butter);
+  }
+
+  @media (max-width: 800px) {
+    .about-grid { grid-template-columns: 1fr; gap: 40px; }
+  }
+
+  /* ===== AUTHORITY MARKER ===== */
+  .authority {
+    background: var(--ink);
+    color: var(--cream);
+    padding: 160px 6vw;
+    text-align: center;
+    overflow: hidden;
+    position: relative;
+  }
+  .authority::before {
+    content: "";
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(237, 217, 160, 0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .authority-stat {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: clamp(120px, 22vw, 360px);
+    line-height: 0.85;
+    letter-spacing: -0.04em;
+    position: relative;
+  }
+  .authority-stat .slash {
+    color: var(--butter);
+    font-style: italic;
+  }
+  .authority-line {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: clamp(22px, 2.5vw, 36px);
+    margin-top: 40px;
+    color: var(--cream);
+    position: relative;
+  }
+  .authority-sub {
+    font-size: 13px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--stone-light);
+    margin-top: 80px;
+    position: relative;
+  }
+
+  /* ===== APPROACH ===== */
+  .approach-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 60px;
+    margin-top: 30px;
+  }
+  .approach-pillar {
+    border-top: 1px solid var(--ink);
+    padding-top: 30px;
+  }
+  .approach-pillar-num {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 13px;
+    color: var(--stone);
+    margin-bottom: 30px;
+  }
+  .approach-pillar h3 {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: 36px;
+    line-height: 1.1;
+    margin-bottom: 24px;
+    letter-spacing: -0.01em;
+  }
+  .approach-pillar h3 em { font-style: italic; }
+  .approach-pillar p {
+    font-size: 16px;
+    line-height: 1.65;
+    color: var(--ink-soft);
+  }
+  @media (max-width: 800px) {
+    .approach-grid { grid-template-columns: 1fr; gap: 40px; }
+  }
+
+  /* ===== METHOD / TRAJECT ===== */
+  .method {
+    background: var(--pearl);
+  }
+  .method-intro {
+    max-width: 880px;
+    margin: 0 auto 100px;
+    text-align: center;
+  }
+  .method-intro p {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: clamp(24px, 2.8vw, 36px);
+    line-height: 1.4;
+    color: var(--ink);
+  }
+
+  .method-steps {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  .method-step {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 60px;
+    padding: 50px 0;
+    border-top: 1px solid var(--line);
+    align-items: start;
+  }
+  .method-step:last-child { border-bottom: 1px solid var(--line); }
+  .method-step-num {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 28px;
+    color: var(--stone);
+  }
+  .method-step h3 {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: 32px;
+    line-height: 1.1;
+    margin-bottom: 16px;
+    letter-spacing: -0.01em;
+  }
+  .method-step h3 em { font-style: italic; }
+  .method-step p {
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--ink-soft);
+    max-width: 640px;
+  }
+  @media (max-width: 800px) {
+    .method-step { grid-template-columns: 1fr; gap: 16px; padding: 40px 0; }
+  }
+
+  /* ===== PRINCIPLES ===== */
+  .principles {
+    padding: 200px 6vw;
+    background: var(--cream);
+  }
+  .principle-list {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .principle {
+    padding: 50px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .principle:first-child { border-top: 1px solid var(--line); }
+  .principle-text {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: clamp(28px, 3.5vw, 52px);
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    transition: color 0.3s;
+  }
+  .principle-text em { font-style: italic; }
+  .principle:hover .principle-text { color: var(--stone); }
+  .principle-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 16px;
+  }
+
+  /* ===== INVESTMENT ===== */
+  .investment {
+    background: var(--butter);
+    color: var(--ink);
+    padding: 160px 6vw;
+  }
+  .investment-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 100px;
+    align-items: start;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  .investment-left h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: clamp(40px, 5vw, 80px);
+    line-height: 1;
+    letter-spacing: -0.025em;
+    margin-bottom: 30px;
+  }
+  .investment-left h2 em { font-style: italic; }
+  .investment-left p {
+    font-size: 18px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    margin-bottom: 1.4em;
+  }
+  .investment-card {
+    background: var(--cream);
+    padding: 50px;
+    border: 1px solid var(--ink);
+    position: relative;
+  }
+  .investment-card .label { margin-bottom: 30px; display: block; }
+  .investment-card .price {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: 96px;
+    line-height: 1;
+    letter-spacing: -0.03em;
+    margin-bottom: 8px;
+  }
+  .investment-card .price-meta {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 18px;
+    color: var(--stone);
+    margin-bottom: 50px;
+  }
+  .investment-card ul {
+    list-style: none;
+    margin-bottom: 50px;
+  }
+  .investment-card li {
+    padding: 16px 0;
+    border-bottom: 1px solid var(--line);
+    font-size: 15px;
+    line-height: 1.5;
+    display: grid;
+    grid-template-columns: 24px 1fr;
+    gap: 16px;
+    align-items: baseline;
+  }
+  .investment-card li:last-child { border-bottom: none; }
+  .investment-card li::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    background: var(--butter);
+    border-radius: 50%;
+    margin-top: 8px;
+  }
+  .investment-card .button {
+    display: inline-block;
+    background: var(--ink);
+    color: var(--cream);
+    padding: 18px 36px;
+    border-radius: 100px;
+    font-size: 12px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    transition: all 0.3s;
+    border: 1px solid var(--ink);
+  }
+  .investment-card .button:hover {
+    background: transparent;
+    color: var(--ink);
+  }
+  .investment-card .availability {
+    margin-top: 24px;
+    font-size: 12px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--stone);
+  }
+  .investment-card .availability strong {
+    color: var(--ink);
+    font-weight: 500;
+  }
+
+  @media (max-width: 900px) {
+    .investment-grid { grid-template-columns: 1fr; gap: 60px; }
+    .investment-card { padding: 40px 30px; }
+    .investment-card .price { font-size: 72px; }
+  }
+
+  /* ===== ABOUT PEARL ===== */
+  .pearl-section {
+    background: var(--cream);
+    padding: 200px 6vw;
+  }
+  .pearl-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 100px;
+    max-width: 1400px;
+    margin: 0 auto;
+    align-items: center;
+  }
+  .pearl-portrait-frame {
+    aspect-ratio: 4/5;
+    background: var(--cream-deep);
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .pearl-portrait-frame::before {
+    content: "Portrait · Pearl";
+    position: absolute;
+    bottom: 30px;
+    left: 30px;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--stone);
+    z-index: 2;
+  }
+  .pearl-portrait-frame::after {
+    content: "P";
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 240px;
+    color: var(--stone-light);
+    opacity: 0.4;
+  }
+  .pearl-content h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: clamp(40px, 5vw, 80px);
+    line-height: 1;
+    letter-spacing: -0.025em;
+    margin-bottom: 50px;
+  }
+  .pearl-content h2 em { font-style: italic; }
+  .pearl-content p {
+    font-size: 17px;
+    line-height: 1.75;
+    color: var(--ink-soft);
+    margin-bottom: 1.3em;
+  }
+  .pearl-credentials {
+    margin-top: 60px;
+    padding-top: 40px;
+    border-top: 1px solid var(--line);
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+  .pearl-credentials div {
+    font-size: 13px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--stone);
+  }
+  .pearl-credentials div strong {
+    display: block;
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 18px;
+    color: var(--ink);
+    margin-top: 6px;
+    text-transform: none;
+    letter-spacing: 0;
+  }
+
+  @media (max-width: 900px) {
+    .pearl-grid { grid-template-columns: 1fr; gap: 60px; }
+  }
+
+  /* ===== FAQ ===== */
+  .faq {
+    background: var(--cream-deep);
+    padding: 160px 6vw;
+  }
+  .faq-list {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  details.faq-item {
+    border-top: 1px solid var(--line);
+    padding: 35px 0;
+  }
+  details.faq-item:last-child { border-bottom: 1px solid var(--line); }
+  details.faq-item summary {
+    list-style: none;
+    cursor: pointer;
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: clamp(22px, 2.4vw, 32px);
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+    transition: color 0.3s;
+  }
+  details.faq-item summary::-webkit-details-marker { display: none; }
+  details.faq-item summary::after {
+    content: "+";
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: 36px;
+    color: var(--stone);
+    transition: transform 0.3s;
+    flex-shrink: 0;
+  }
+  details.faq-item[open] summary::after { transform: rotate(45deg); }
+  details.faq-item summary:hover { color: var(--stone); }
+  details.faq-item p {
+    margin-top: 20px;
+    font-size: 17px;
+    line-height: 1.7;
+    color: var(--ink-soft);
+    max-width: 800px;
+  }
+
+  /* ===== CONTACT ===== */
+  .contact {
+    background: var(--ink);
+    color: var(--cream);
+    padding: 200px 6vw 100px;
+    text-align: center;
+  }
+  .contact-tagline {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: clamp(36px, 5vw, 80px);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    max-width: 1100px;
+    margin: 0 auto 60px;
+  }
+  .contact-tagline em { font-style: normal; }
+  .contact-cta {
+    display: inline-block;
+    background: var(--butter);
+    color: var(--ink);
+    padding: 22px 50px;
+    border-radius: 100px;
+    font-size: 13px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    margin-top: 30px;
+    transition: all 0.3s;
+    border: 1px solid var(--butter);
+  }
+  .contact-cta:hover {
+    background: transparent;
+    color: var(--butter);
+  }
+  .contact-meta {
+    margin-top: 80px;
+    padding-top: 60px;
+    border-top: 1px solid rgba(216, 209, 191, 0.2);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    text-align: left;
+    max-width: 1100px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .contact-meta div { font-size: 13px; line-height: 1.7; }
+  .contact-meta div .label { color: var(--stone-light); display: block; margin-bottom: 12px; }
+  .contact-meta div a, .contact-meta div span {
+    color: var(--cream);
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 18px;
+    font-weight: 400;
+  }
+  @media (max-width: 800px) {
+    .contact-meta { grid-template-columns: 1fr; gap: 30px; }
+  }
+
+  /* ===== FOOTER ===== */
+  footer {
+    background: var(--ink);
+    color: var(--stone-light);
+    padding: 60px 6vw;
+    border-top: 1px solid rgba(216, 209, 191, 0.15);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  footer .label { color: var(--stone); font-size: 10px; }
+  footer .pearl-mark {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: 15px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--cream);
+  }
+  footer .pearl-mark .dot {
+    display: inline-block;
+    width: 4px; height: 4px;
+    background: var(--butter);
+    border-radius: 50%;
+    margin-left: 2px;
+    transform: translateY(-6px);
+  }
+
+  /* ===== ANIMATIONS ===== */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 1s ease, transform 1s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Hero entrance */
+  .hero-meta-top, .hero-mark, .hero-tagline, .hero-bottom {
+    animation: fadeUp 1.2s ease forwards;
+    opacity: 0;
+  }
+  .hero-meta-top { animation-delay: 0.1s; }
+  .hero-mark { animation-delay: 0.3s; }
+  .hero-tagline { animation-delay: 0.6s; }
+  .hero-bottom { animation-delay: 0.9s; }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+    .reveal { opacity: 1; transform: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== NAV ===== -->
+<nav id="mainNav">
+  <a href="#top" class="nav-mark" aria-label="Pearl — naar boven">Pearl<span class="dot"></span></a>
+  <div class="nav-links">
+    <a href="#approach">Aanpak</a>
+    <a href="#method">Traject</a>
+    <a href="#about">Over Pearl</a>
+    <a href="#contact" class="nav-cta">Eerste gesprek</a>
+  </div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="hero-meta-top">
+    <div class="label">Family Counsel · Anno MMXXVI</div>
+    <div class="hero-meta-right label">
+      Drie gezinnen per maand<br>
+      Wachtlijst geopend
+    </div>
+  </div>
+
+  <div>
+    <h1 class="hero-mark">Pearl<span class="pearl-dot"></span></h1>
+    <p class="hero-tagline">Voor ouders die uit elkaar gaan, en die het <span class="italic">mooi</span> willen doen.</p>
+  </div>
+
+  <div class="hero-bottom">
+    <div class="hero-bottom-block">
+      <strong>152 / 0</strong>
+      Scheidingen begeleid in acht jaar tijd. Nul verloren. Niet door geluk.
+    </div>
+    <div class="hero-bottom-block">
+      <strong>Drie maanden</strong>
+      Eén gezin tegelijk. Hands on. Wij stoppen pas als het werkt voor iedereen.
+    </div>
+    <div class="hero-bottom-block">
+      <strong>Persoonlijk</strong>
+      Geen standaard plan. Geen vast protocol. Alleen wat past bij precies dít gezin.
+    </div>
+  </div>
+</section>
+
+<!-- ===== ABOUT (de filosofie) ===== -->
+<section class="about-section" id="about">
+  <div class="about-grid">
+    <div class="label">01 · De parel</div>
+    <div class="about-content reveal">
+      <p>Een parel ontstaat doordat de oester de indringer omhelst en die elke keer opnieuw omhult met een laagje van iets moois. Niet ondanks de breuk. Door de breuk.</p>
+
+      <p>Dat is hoe ik over scheiden denk. Wat er gebeurt is hard. Wat er na komt hoeft dat niet te zijn. Een goed begeleide scheiding kan iets opbouwen wat zelfs sterker is dan wat het was. Voor jullie als ouders. Voor jullie kinderen. Voor het bedrijf dat blijft draaien terwijl alles anders wordt.</p>
+
+      <div class="about-quote">
+        What strikes the oyster, doesn't damage the pearl.
+      </div>
+
+      <p>Mijn naam is Pearl. Ik begeleid ouders die uit elkaar gaan en die nog steeds samen ouder willen zijn. Niet als koppel. Wel als team. De ouders met wie ik werk weten al dat ze dit goed willen doen. Ze hebben mij niet gevonden omdat ze hun ex willen pakken. Ze hebben mij gevonden omdat ze zich ergens in hun lijf realiseerden dat dit een fase is die ze niet willen verprutsen.</p>
+
+      <p>Daar werk ik voor.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== AUTHORITY ===== -->
+<section class="authority">
+  <div class="authority-stat">152<span class="slash">/</span>0</div>
+  <p class="authority-line">Scheidingen begeleid. <span class="italic">Nul verloren.</span></p>
+  <p class="authority-sub">Acht jaar werk · Nul concessies aan kwaliteit</p>
+</section>
+
+<!-- ===== APPROACH ===== -->
+<section id="approach">
+  <div class="section-header">
+    <div>
+      <div class="label">02 · Aanpak</div>
+      <div class="section-num" style="margin-top: 16px;">Drie pijlers</div>
+    </div>
+    <h2 class="section-title">Scherpte. Warmte. <em>Excellentie.</em></h2>
+  </div>
+
+  <div class="approach-grid">
+    <div class="approach-pillar reveal">
+      <div class="approach-pillar-num">i.</div>
+      <h3>Scherpte <em>als het moet.</em></h3>
+      <p>Mijn klanten noemen mij de Pitbull. Ik bijt zelden. Ik hoef het bijna nooit. Maar het is fijn voor de ouders met wie ik werk om te weten dat ik het kan. Helder waar het moet, kalm waar het kan.</p>
+    </div>
+    <div class="approach-pillar reveal">
+      <div class="approach-pillar-num">ii.</div>
+      <h3>Warmte <em>als basis.</em></h3>
+      <p>Geen advocatentaal. Geen afstand. Ik kom in jullie huis. Ik leer jullie kinderen kennen. Ik wil weten hoe jullie ontbijten en welk muziekje aanstaat in de auto. Pas dan begint het echte werk.</p>
+    </div>
+    <div class="approach-pillar reveal">
+      <div class="approach-pillar-num">iii.</div>
+      <h3>Excellentie <em>als standaard.</em></h3>
+      <p>Geen standaard plannen. Geen vast protocol. Wij stoppen pas als het werkt voor iedereen. Voor jou. Voor je ex. Voor de kinderen, ieder afzonderlijk. Voor jullie bedrijven en jullie ritmes.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== METHOD ===== -->
+<section class="method" id="method">
+  <div class="section-header">
+    <div>
+      <div class="label">03 · Traject</div>
+      <div class="section-num" style="margin-top: 16px;">Drie maanden, één gezin</div>
+    </div>
+    <h2 class="section-title">Hoe het <em>werkt.</em></h2>
+  </div>
+
+  <div class="method-intro reveal">
+    <p>Drie maanden. Één gezin. Zes live momenten. Vijftien stappen. Vierentwintiguurs bereikbaarheid via je telefoon, want als jullie zoontje op maandag bij school weigert te wisselen wil ik dat je belt en niet drie weken wacht.</p>
+  </div>
+
+  <div class="method-steps">
+    <div class="method-step reveal">
+      <div class="method-step-num">i.</div>
+      <div>
+        <h3>De <em>opening.</em> Een nacht weg.</h3>
+        <p>We beginnen met een nacht in een hotel of op een landgoed. Iedereen heeft een eigen kamer, ook ik. We eten samen. Daarna spreek ik apart met elke ouder. Niet om partijen te kiezen. Om te begrijpen wat jullie meenemen in deze nieuwe vorm.</p>
+      </div>
+    </div>
+
+    <div class="method-step reveal">
+      <div class="method-step-num">ii.</div>
+      <div>
+        <h3>De <em>kinderen.</em> Een ochtend met hen.</h3>
+        <p>De ochtend daarna doe ik iets met de kinderen. Niet omdat ik graag in een speeltuin sta, maar omdat ik wil zien hoe zij in elkaar zitten en hoe ze met jullie reageren. Een gezin met een baby vraagt iets anders dan een gezin met een tiener. Daar passen we het plan op aan.</p>
+      </div>
+    </div>
+
+    <div class="method-step reveal">
+      <div class="method-step-num">iii.</div>
+      <div>
+        <h3>Het <em>plan.</em> Eerste versie binnen 48 uur.</h3>
+        <p>Dezelfde middag bouwen we het plan. De dag daarna ligt de eerste versie in jullie inbox. Geen template. Geen standaard ouderschapsplan dat in honderdduizend andere gezinnen ook is gebruikt. Eén plan, voor één gezin.</p>
+      </div>
+    </div>
+
+    <div class="method-step reveal">
+      <div class="method-step-num">iv.</div>
+      <div>
+        <h3>Drie maanden <em>begeleiding.</em></h3>
+        <p>Vijf live contactmomenten verspreid over de drie maanden. Vierentwintiguurs bereikbaarheid via je telefoon. We blijven slijpen tot het plan past zoals een goed maatpak past. Geen ruimte voor twijfel.</p>
+      </div>
+    </div>
+
+    <div class="method-step reveal">
+      <div class="method-step-num">v.</div>
+      <div>
+        <h3>De <em>doorstart.</em> Het tekenen.</h3>
+        <p>We sluiten af met het tekenen van het plan, samen met de kinderen, met vingerverf. Dit is geen einde. Dit is een doorstart. Dat verdient een fotoshoot, en die regel ik. Want dit moment hoort gevierd te worden.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PRINCIPLES ===== -->
+<section class="principles">
+  <div class="section-header">
+    <div>
+      <div class="label">04 · Principes</div>
+    </div>
+    <h2 class="section-title">Waar ik <em>voor sta.</em></h2>
+  </div>
+
+  <div class="principle-list">
+    <div class="principle reveal">
+      <p class="principle-text">Wat de oester raakt, <em>beschadigt de parel niet.</em></p>
+      <div class="principle-meta">
+        <div class="label">i</div>
+      </div>
+    </div>
+    <div class="principle reveal">
+      <p class="principle-text">Een advocaat maakt een standaard plan voor jouw gezin. <em>Ik geloof niet in standaard.</em></p>
+      <div class="principle-meta">
+        <div class="label">ii</div>
+      </div>
+    </div>
+    <div class="principle reveal">
+      <p class="principle-text">Mensen willen tijdens een scheiding hun gelijk halen. <em>Maar je wil geen gelijk. Je wil geluk.</em></p>
+      <div class="principle-meta">
+        <div class="label">iii</div>
+      </div>
+    </div>
+    <div class="principle reveal">
+      <p class="principle-text">Een goed ouderschapsplan is geen document. <em>Het is de basis waarop het volwassen leven van je kind gebouwd wordt.</em></p>
+      <div class="principle-meta">
+        <div class="label">iv</div>
+      </div>
+    </div>
+    <div class="principle reveal">
+      <p class="principle-text">Je hoeft niet boven je emoties te staan. <em>Je hoeft alleen iemand te hebben die ze niet voor jou laat beslissen.</em></p>
+      <div class="principle-meta">
+        <div class="label">v</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== INVESTMENT ===== -->
+<section class="investment">
+  <div class="investment-grid">
+    <div class="investment-left">
+      <div class="label" style="margin-bottom: 30px; display: block;">05 · Investering</div>
+      <h2>Voor wie het <em>echt</em> goed wil regelen.</h2>
+      <p>Drie gezinnen per maand. Geen marketingtruc. Dit is wat ik nodig heb om bij iedereen volledig binnen te kunnen komen.</p>
+      <p>De ouders die hier zitten weten al dat de prijs van een lange scheiding niet door hen wordt betaald, maar door hun kinderen. In tijd. In stress. In jeugd die ze niet terugkrijgen. Daarom investeren ze in drie maanden, in plaats van twee jaar door te schuiven.</p>
+    </div>
+
+    <div class="investment-card">
+      <span class="label">Pilot tarief · 2026</span>
+      <div class="price">€10.000</div>
+      <div class="price-meta italic">Eenmalig · drie maanden begeleiding</div>
+
+      <ul>
+        <li>Eén gezin, drie maanden, hands on</li>
+        <li>Opening met overnachting in hotel of op landgoed</li>
+        <li>Persoonlijke kennismaking met de kinderen</li>
+        <li>Op maat gemaakt ouderschapsplan</li>
+        <li>Zes live contactmomenten</li>
+        <li>Vierentwintiguurs bereikbaarheid</li>
+        <li>Afsluiting met tekenmoment en fotoshoot</li>
+      </ul>
+
+      <a href="#contact" class="button">Plan een gesprek</a>
+      <div class="availability"><strong>Drie plekken · per maand</strong> · wachtlijst open</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ABOUT PEARL ===== -->
+<section class="pearl-section">
+  <div class="pearl-grid">
+    <div class="pearl-portrait-frame"></div>
+    <div class="pearl-content reveal">
+      <div class="label" style="margin-bottom: 30px; display: block;">06 · Over Pearl</div>
+      <h2>Pearl <em>zelf.</em></h2>
+      <p>Ik heb jarenlang met advocaat Mark Sassen gewerkt, voornamelijk voor vaders in scheiding. Langzaam ben ik van vaders naar stellen gegaan, omdat ik merkte dat het conflict bijna nooit zo groot is als het lijkt. Mensen zijn vooral geraakt. En als je dat goed begeleidt, gaat de hele rest anders lopen.</p>
+      <p>Ik werk nu volledig vanuit eigen praktijk, met maximaal drie gezinnen per maand. Dit is wat ik het beste kan en het diepste raak. Ik heb zelf een tweeling van vijf en een half, dus ik weet wat het is om gezin en werk in balans te houden. Mijn klanten noemen mij de Pitbull. Ik bijt zelden, maar als het moet, kan ik het, en dat geeft rust aan iedereen.</p>
+
+      <div class="pearl-credentials">
+        <div>Geschoold als <strong>Mediator</strong></div>
+        <div>Achtergrond in <strong>Kinderpsychologie</strong></div>
+        <div>Tevens <strong>Orthopedagoog</strong></div>
+        <div>Ervaring <strong>152 scheidingen</strong></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section class="faq">
+  <div class="section-header">
+    <div>
+      <div class="label">07 · Vragen</div>
+    </div>
+    <h2 class="section-title">Wat ouders <em>vaak vragen.</em></h2>
+  </div>
+
+  <div class="faq-list">
+    <details class="faq-item">
+      <summary>Werk je ook met ouders die nog niet helemaal samen zijn op het besluit?</summary>
+      <p>Ja, mits beide ouders bereid zijn om naar elkaar te luisteren. Mijn werk vraagt iets van allebei, namelijk de wens om hier samen goed uit te komen, ook als jullie als koppel niet meer samen zijn. Als die wens er aan beide kanten is, ook al is die nog kwetsbaar, dan kan ik werken.</p>
+    </details>
+
+    <details class="faq-item">
+      <summary>Wat als wij al een advocaat of mediator hebben?</summary>
+      <p>Dan kan ik daarnaast werken. Mijn focus ligt op het ouderschapsplan en de relatie met jullie kinderen. Voor boedelverdeling, alimentatieberekeningen en de juridische afronding kan een specialist daarop blijven ingeschakeld.</p>
+    </details>
+
+    <details class="faq-item">
+      <summary>Waarom drie maanden, en geen langer of korter traject?</summary>
+      <p>Drie maanden is precies wat een gezin nodig heeft om iets nieuws te bouwen dat ook echt staat. Korter blijft oppervlakkig. Langer maakt mensen afhankelijk. In drie maanden kunnen we elke fase van een eerste seizoen samen door, zodat we gaandeweg kunnen bijstellen wat in de praktijk niet werkt.</p>
+    </details>
+
+    <details class="faq-item">
+      <summary>Werk je internationaal?</summary>
+      <p>Ja. Ik werk in Nederlandstalige en Engelstalige gezinnen, en ik kan op locatie werken in Nederland en daarbuiten. Voor expat gezinnen, internationaal werkende ouders en piloten heb ik specifieke ervaring met de complexiteit die daarbij hoort.</p>
+    </details>
+
+    <details class="faq-item">
+      <summary>Wat als wij eerst nog niet zeker weten of we wel willen scheiden?</summary>
+      <p>Dan ben ik mogelijk niet de eerste persoon voor jullie. Mijn werk is gebouwd op het uitgangspunt dat de scheiding een feit is, en dat we van daaruit gaan bouwen. Voor de fase daarvoor zijn er andere goede begeleiders, en ik kan jullie daarmee verbinden.</p>
+    </details>
+
+    <details class="faq-item">
+      <summary>Hoe meld ik me aan?</summary>
+      <p>Plan een eerste kennismakingsgesprek via de knop hieronder. Het gesprek duurt twintig minuten en kost honderdvijftig euro. In dat gesprek bespreken we kort jullie situatie, en kijken we of dit traject past bij waar jullie nu staan. Geen verplichting. Wel een goede eerste stap.</p>
+    </details>
+  </div>
+</section>
+
+<!-- ===== CONTACT ===== -->
+<section class="contact" id="contact">
+  <p class="contact-tagline">
+    Klaar om dit met iemand te regelen <span class="italic">die naast jullie blijft staan?</span>
+  </p>
+  <a href="mailto:hello@pearlfamilycounsel.com" class="contact-cta">Plan een eerste gesprek</a>
+
+  <div class="contact-meta">
+    <div>
+      <span class="label">Direct contact</span>
+      <a href="mailto:hello@pearlfamilycounsel.com">hello@pearlfamilycounsel.com</a>
+    </div>
+    <div>
+      <span class="label">Eerste gesprek</span>
+      <span>20 minuten · €150</span>
+    </div>
+    <div>
+      <span class="label">Beschikbaarheid</span>
+      <span>Drie gezinnen per maand</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="pearl-mark">Pearl<span class="dot"></span></div>
+  <div class="label">© MMXXVI · Pearl Family Counsel · Alle rechten voorbehouden</div>
+  <div class="label">What strikes the oyster, doesn't damage the pearl</div>
+</footer>
+
+<script>
+  // Nav scroll state
+  const nav = document.getElementById('mainNav');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) {
+      nav.classList.add('scrolled');
+    } else {
+      nav.classList.remove('scrolled');
+    }
+  });
+
+  // Reveal on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
